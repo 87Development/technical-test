@@ -7,7 +7,6 @@ const props = defineProps({
 
 const currentYear = new Date().getFullYear();
 
-
 </script>
 
 <template>
@@ -20,9 +19,11 @@ const currentYear = new Date().getFullYear();
 					</div>
 			</div>
 			<div class="w-full">
-				<div class="text-white h-36 overflow-hidden flex items-center justify-center relative">
-					<img :src="hero" />
-					<h2 class="absolute text-4xl">Blog</h2>
+				<div class="w-full text-white h-24 md:h-36 relative overflow-hidden">
+					<img :src="hero" class="object-fill relative" />
+					<div class="absolute top-0 w-full h-24 md:36 flex align-center justify-center items-center">
+						<h2 class="absolute text-4xl z-10">Blog</h2>
+					</div>
 				</div>
 			</div>
 	</header>
@@ -31,10 +32,10 @@ const currentYear = new Date().getFullYear();
 	<main>
 		<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
 			<div class="grid overflow-hidden grid-cols-12 gap-4">
-				<div class="box col-start-1 col-end-9">
+				<div class="box md:col-start-1 md:col-end-9 col-start-1 col-end-12 mb-4">
 					<slot name="post" />
 				</div>
-				<div class="box col-start-9 col-span-3">
+				<div class="box md:col-start-9 md:col-span-3 col-start-1 col-end-12 mb-4">
 					<nav>
 						<Link v-for="category in categories"
 									:key="category.id"

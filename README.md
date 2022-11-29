@@ -12,8 +12,8 @@ Laravel project using Inertia (Vue flavour) for the frontend. Authentication via
 
 # Routes
  - /
- -/posts/{id}
- -/categories/{id}
+ - /posts/{id}
+ - /categories/{id}
 
  # Known bugs
 

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->bigInteger('category_id')->nullable()->after('status')->unsigned();
 
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
         });
     }
 

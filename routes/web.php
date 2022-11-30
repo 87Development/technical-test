@@ -49,6 +49,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/categories/{category}', [AdminCategoryController::class, 'edit'])->name('categories.edit');
     Route::post('/categories', [AdminCategoryController::class, 'store'])->name('categories.store');
     Route::patch('/categories/{category}', [AdminCategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{category}',  [AdminCategoryController::class, 'destroy'])->name('categories.destroy');
 });
 
 

@@ -3,9 +3,13 @@
 	import InputLabel from '@/Components/InputLabel.vue';
 	import TextInput from '@/Components/TextInput.vue';
 	import InputError from '@/Components/InputError.vue';
+	import DangerButton from '@/Components/DangerButton.vue';
+	import Modal from '@/Components/Modal.vue';
+	import SecondaryButton from '@/Components/SecondaryButton.vue';
 	import '@vuepic/vue-datepicker/dist/main.css'
 	import { Head, useForm, Link } from '@inertiajs/inertia-vue3';
   import { ref } from 'vue';
+	import { Inertia } from "@inertiajs/inertia";
 
 	const confirmingCategoryDeletion = ref(false);
 
@@ -27,6 +31,14 @@
 		});
 	}
 
+	function deleteCategory() {
+		confirmingCategoryDeletion.value = true;
+	}
+
+	function doDelete() {
+		Inertia.delete(route('categories.destroy', props.category.id));
+	}
+
 </script>
 
 <template>
@@ -35,7 +47,7 @@
 			<Modal :show="confirmingCategoryDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
-                    Are you sure your want to delete this post?
+                    Are you sure your want to delete this category?
                 </h2>
 
                 <div class="mt-6 flex justify-end">
@@ -47,7 +59,7 @@
                         :disabled="form.processing"
                         @click="doDelete"
                     >
-                        Delete Post
+                        Delete Category
                     </DangerButton>
                 </div>
             </div>
@@ -55,7 +67,8 @@
         <template #header>
 						<div class="flex justify-between align-center w-full">
 							<h2 class="font-semibold text-xl text-gray-800 leading-tight">Edit Category</h2>
-							<Link :href="route('posts.index')" class="ml-auto">Back to categories</Link>
+							<Link :href="route('categories.index')" class="ml-auto">Back to categories</Link>
+							<DangerButton class="ml-2" @click="deleteCategory">Delete Category</DangerButton>
 						</div>
             
         </template>

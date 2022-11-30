@@ -50,6 +50,7 @@
 	}
 
 	function doDelete() {
+
 		Inertia.delete(route('posts.destroy', props.post.id));
 	}
 
